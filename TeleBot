@@ -3,7 +3,7 @@ from sklearn.linear_model import LinearRegression #pip install -U scikit-learn
 from sklearn.model_selection import train_test_split 
 import numpy as np
 
-import telebot #pip install pyTelegramBotAPI
+import telebot #pip install telebot
 from telebot import types
 
 token = "6548216408:AAEGA2EPniquuz2X4Eq9se15cU3L_IFJMP0"
@@ -32,14 +32,7 @@ def begin(message):
 @bot.callback_query_handler(func=lambda callback: True)
 def sendResult(callback):
     if(callback.data != "begin"):
-        bot.send_message(chatId, f"Для {flats[int(callback.data)]}")
-        bot.send_message(chatId, "Прогноз на 14 дней:")
-        bot.send_message(chatId, f"От {int(predict * rangeArea[int(callback.data)][0])} рублей")
-        bot.send_message(chatId, f"До {int(predict * rangeArea[int(callback.data)][1])} рублей")
-        markup = types.InlineKeyboardMarkup()
-        btnBegin = types.InlineKeyboardButton("Да", callback_data = 'begin')
-        markup.add(btnBegin)
-        bot.send_message(chatId, f"Еще раз?", reply_markup=markup)
+        pass
     else:
         begin(chatId)
 
