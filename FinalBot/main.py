@@ -1,5 +1,5 @@
 import pandas as pd #pip install pandas
-from sklearn.linear_model import LinearRegression #pip install -U scikit-learn
+from sklearn.linear_model import GradientBoostingRegressor #pip install -U scikit-learn
 from sklearn.model_selection import train_test_split 
 import numpy as np
 
@@ -49,7 +49,7 @@ def GetPredict():
         x = data[['Стоимость']][:-projection]
         y = data['Прогноз'][:-projection]
         x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = 0.2, random_state = 42)
-        model = LinearRegression()
+        model = GradientBoostingRegressor()
         model.fit(x_train, y_train)
         model.score(x_test, y_test)
         global predict
